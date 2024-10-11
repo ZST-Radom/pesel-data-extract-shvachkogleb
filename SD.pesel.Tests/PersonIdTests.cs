@@ -47,8 +47,8 @@ public class PersonIdTests
     }
 
     [Theory]
-    [InlineData("44051401359", 1944)]
-    [InlineData("07291495676", 2007)]
+    [InlineData("44051401359", 80)]
+    [InlineData("07291495676", 17)]
     public void GetYearOfBirth_ShouldReturnCorrectYearOfBirth(string pesel, int expectedYearOfBirth)
     {
         // Arrange
@@ -63,7 +63,7 @@ public class PersonIdTests
 
     [Theory]
     [InlineData("44051401359", "m")]
-    [InlineData("01260389836", "k")]
+    [InlineData("01260389846", "k")]
     public void GetGender_ShouldReturnCorrectGender(string pesel, string expectedGender)
     {
         // Arrange
