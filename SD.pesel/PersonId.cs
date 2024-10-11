@@ -133,30 +133,32 @@ public class PersonId
         string id = _id;
         int sum = 0;
         int[] weights = { 1, 3, 7, 9, 1, 3, 7, 9, 1, 3 };
-        if (id.Length != 11) { 
-           return false;
+        if (id.Length != 11)
+        {
+            return false;
         }
         for (int i = 0; i < 10; i++)
         {
-            sum += Convert.ToInt32(id[i]) * weights[i];
+            sum += (id[i] - '0') * weights[i]; // Poprawne konwertowanie na cyfrę
         }
-        if (sum >= 10 && sum <= 99 || sum <= -10 && sum >= -99)
+        if (sum >= 10 && sum <= 99)
         {
             string a = sum.ToString();
             a = a.Substring(0, 1);
             int b = Convert.ToInt32(a);
             int c = 10 - b;
-            char c3 = Convert.ToChar(c);
-            if (c3 == id[10])
+            char c3 = (char)(c + '0'); // Poprawna konwersja na char
+            if (c3 == id[10]) // Porównanie z ostatnią cyfrą
             {
                 return true;
             }
             else { return false; }
         }
-        else {
-            int b2 = Convert.ToInt32(sum);
+        else
+        {
+            int b2 = sum % 10; // Użyj reszty z dzielenia
             int c1 = 10 - b2;
-            char c2 = Convert.ToChar(c1);
+            char c2 = (char)(c1 + '0'); // Poprawna konwersja na char
             if (c2 == id[10]) { return true; }
             else { return false; }
         }
